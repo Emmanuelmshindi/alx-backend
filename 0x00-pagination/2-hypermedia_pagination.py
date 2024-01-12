@@ -63,6 +63,7 @@ class Server:
             return []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """Returns dictionary with specified key-value pairs"""
         dataset = self.dataset()
         dataset_size = len(dataset)
 
