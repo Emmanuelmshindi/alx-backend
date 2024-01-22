@@ -12,7 +12,7 @@ class MRUCache(BaseCaching):
     def __init__(self):
         """ Initiliaze
         """
-        super().__init__() #provides cache_data
+        super().__init__()
         self.dq = deque()
 
     def put(self, key, item):
@@ -22,7 +22,7 @@ class MRUCache(BaseCaching):
             if key not in self.cache_data:
                 # If cache is full, remove most recently used element
                 if len(self.dq) == BaseCaching.MAX_ITEMS:
-                    last = self.dq.pop() # Remove the element just appended
+                    last = self.dq.pop()
                     self.cache_data.pop(last)
                     print("DISCARD:", last)
 
@@ -40,7 +40,7 @@ class MRUCache(BaseCaching):
             # Move accessed key to the end and return its value
             value = self.cache_data.pop(key)
             self.cache_data[key] = value
-            self.dq.remove(key) # Remove accessed key from its current position
-            self.dq.append(key) # Add key to the start of the deque
+            self.dq.remove(key)
+            self.dq.append(key)
             return value
         return None
