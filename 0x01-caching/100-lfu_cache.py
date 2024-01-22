@@ -5,8 +5,33 @@ from collections import deque
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """LRUCache defines a basic caching system
+class ListNode:
+    def __init__(self, val, prev=None, next=None):
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+class LinkedList:
+    def __init__(self):
+        self.left = ListNode(0)
+        self.right = ListNode(0, self.left)
+        self.left.next = self.right
+        self.map = {}
+
+    def length(self):
+        return len(self.map)
+
+    def pushRight(self, val):
+        node = ListNode(val, self.right.prev, self.right)
+        self.map[val] = node
+        self.right.prev = node
+        node.prev.next = node
+
+    def pop(self, val):
+
+
+class LFUCache(BaseCaching):
+    """LFUCache defines a basic caching system
        with maximum size of 4
     """
     def __init__(self):
