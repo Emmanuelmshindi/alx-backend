@@ -12,7 +12,7 @@ class LRUCache(BaseCaching):
     def __init__(self):
         """ Initiliaze
         """
-        super().__init__() #provides cache_data
+        super().__init__()
         self.dq = deque()
 
     def put(self, key, item):
@@ -40,7 +40,7 @@ class LRUCache(BaseCaching):
             # Move accessed key to the end and return its value
             value = self.cache_data.pop(key)
             self.cache_data[key] = value
-            self.dq.remove(key) # Remove accessed key from its current position
-            self.dq.appendleft(key) # Add key to the end of the deque
+            self.dq.remove(key)
+            self.dq.appendleft(key)
             return value
         return None
