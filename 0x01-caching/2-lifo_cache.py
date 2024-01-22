@@ -21,7 +21,8 @@ class LIFOCache(BaseCaching):
         if key and item:
             if key not in self.cache_data:
                 if len(self.lifo_order) == self.MAX_ITEMS:
-                    discarded_key = self.lifo_order.pop(len(self.lifo_order) - 1)
+                    to_pop = len(self.lifo_order) - 1
+                    discarded_key = self.lifo_order.pop(to_pop)
                     self.cache_data.pop(discarded_key)
                     print("DISCARD: {}".format(discarded_key))
             else:
